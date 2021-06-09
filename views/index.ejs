@@ -16,9 +16,9 @@
     <ul>
         <% ideas.forEach(function(idea){ %>
             <li>
-                <img class="indexPic" src="<%=idea.image%>" alt="<%=idea.title%>"><br />
                 <a href="/ideas/<%=idea.id%>">
                     <%=idea.title%>
+                    <img class="indexPic" src="<%=idea.image%>" alt="<%=idea.title%>">
                 </a><br />
                 <a href="/ideas/<%=idea.id%>/edit">Edit</a>
                 <form action="/ideas/<%=idea.id%>?_method=DELETE" method="POST">

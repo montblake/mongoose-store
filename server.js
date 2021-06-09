@@ -5,10 +5,6 @@ const methodOverride = require('method-override');
 require('dotenv').config();
 
 
-//  Import Data
-const Idea = require('./models/idea');
-
-
 // IMPORT DOTENV FILES
 const DATABASE_URL = process.env.DATABASE_URL;
 const PORT = process.env.PORT;
@@ -39,77 +35,9 @@ app.use(methodOverride('_method'));
 // ========================================
 //                  ROUTES
 // ========================================
+const ideasController = require('./controllers/ideas')
+app.use('/ideas', ideasController);
 
-//  SEED
-const seedData = require('./models/seed');
-app.get('/ideas/seed',  (req, res) => {
-    // First, make sure database is empty
-    Idea.deleteMany({}, (error, allIdeas) => {});
-    // Now make all entries to seed data
-    Idea.create(seedData, (error, data) => {
-        res.redirect('/ideas');
-    });
-});
-
-
-// Index
-app.get('/ideas', (req, res) => {
-    Idea.find({}, (error, allIdeas) => {
-        res.render('index.ejs', { ideas: allIdeas })
-    });
-});
-
-
-// New
-app.get('/ideas/new', (req, res)=> {
-    res.render('new.ejs');
-});
-
-
-// Delete
-app.delete('/ideas/:id', (req, res) => {
-    Idea.findByIdAndDelete(req.params.id, (error, foundIdea) => {
-        res.redirect('/ideas');
-    });
-});
-
-
-// Update
-app.put('/ideas/:id', (req, res) => {
-    Idea.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedIdea) => {
-        res.redirect(`/ideas/${req.params.id}`);
-    });
-});
-
-
-// Create
-app.post('/ideas', (req, res) => {
-    if (req.body.price < 0) req.body.price = 0;
-    if (req.body.qty < 0) req.body.qty = 0;
-    Idea.create(req.body, (error, createdIdea)=>{
-        res.redirect('/ideas');
-    });
-});
-
-
-// Edit
-app.get('/ideas/:id/edit', (req, res) => {
-    Idea.findById(req.params.id, (error, foundIdea) => {
-        res.render('edit.ejs',{ idea: foundIdea});
-    });
-});
-
-
-// Show
-app.get('/ideas/:id', (req, res) => {
-    Idea.findById(req.params.id, (err, foundIdea) => {
-        res.render(
-            'show.ejs',
-            {
-                idea: foundIdea,
-            });
-    });
-});
 
 // ============================
 //         LiSTENER
