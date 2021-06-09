@@ -32,7 +32,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 // Middleware
 // Body parser middleware: give access to req.body
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static('public'));
 
 // ========================================
 //                  ROUTES

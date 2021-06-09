@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
     <title>Marketplace of Ideas</title>
 </head>
 <body>
     <a href="/ideas/new">Add a New Idea</a>
     <h1>The Marketplace of Ideas</h1>
+    <h2>Ideas good and bad, new and used, borrowed and stolen. For Sale to the public.</h2>
     <ul>
         <% ideas.forEach(function(idea){ %>
             <li>
+                <img class="indexPic" src="<%=idea.image%>" alt="<%=idea.title%>">
                 <a href="/ideas/<%=idea.id%>">
                     <%=idea.title%>
                 </a>
