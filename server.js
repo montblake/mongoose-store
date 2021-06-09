@@ -1,6 +1,7 @@
 // DEPENDENCIES
 const express = require('express');
 const app = express();
+const methodOverride = require('method-override');
 require('dotenv').config();
 
 
@@ -33,6 +34,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 // Body parser middleware: give access to req.body
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(methodOverride('_method'));
 
 // ========================================
 //                  ROUTES
@@ -64,6 +66,17 @@ app.get('/ideas/new', (req, res)=> {
 });
 
 
+// Delete
+app.delete('/ideas/:id', (req, res) => {
+    Idea.findByIdAndDelete(req.params.id, (error, foundIdea) => {
+        res.redirect('/ideas');
+    });
+});
+
+
+// Update
+
+
 // Create
 app.post('/ideas', (req, res) => {
     if (req.body.price < 0) req.body.price = 0;
@@ -72,6 +85,10 @@ app.post('/ideas', (req, res) => {
         res.redirect('/ideas');
     });
 });
+
+
+// Edit
+
 
 
 // Show
