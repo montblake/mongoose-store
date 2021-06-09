@@ -75,6 +75,11 @@ app.delete('/ideas/:id', (req, res) => {
 
 
 // Update
+app.put('/ideas/:id', (req, res) => {
+    Idea.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedIdea) => {
+        res.redirect(`/ideas/${req.params.id}`);
+    });
+});
 
 
 // Create
@@ -88,7 +93,11 @@ app.post('/ideas', (req, res) => {
 
 
 // Edit
-
+app.get('/ideas/:id/edit', (req, res) => {
+    Idea.findById(req.params.id, (error, foundIdea) => {
+        res.render('edit.ejs',{ idea: foundIdea});
+    });
+});
 
 
 // Show

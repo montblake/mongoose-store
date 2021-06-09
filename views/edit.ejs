@@ -11,13 +11,14 @@
     <nav>
         <a href="/ideas">Back to Main Ideas Page</a>
     </nav>
-    <h1>New Idea Page</h1>
-    <form action="/ideas" method="POST">
-        <textarea name="description" rows="4" cols="50">This is where you describe your idea. As briefly as possible.</textarea><br/>
-        Image: <input type="text" name="image" placeholder="Enter URL where image can be found"/><br/>
-        Price: <input type="number" name="price"/><br/>
-        Quantity: <input type="number" name="qty"/><br/>
-        <input type="submit" value="Add Idea" />
+    <h1>Edit Idea Page</h1>
+    <form action="/ideas/<%=idea.id%>?_method=PUT" method="POST">
+        Title: <input type="text" name="title" value="<%=idea.title%>" />
+        Description: <textarea name="description" rows="4" cols="50" ><%=idea.description%></textarea><br/>
+        Image: <input type="text" name="image" value="<%=idea.image%>"/><br/>
+        Price: <input type="number" name="price" value="<%=idea.price%>" /><br/>
+        Quantity: <input type="number" name="qty" value="<%=idea.qty%>"/><br/>
+        <input type="submit" value="Submit Edited Idea" />
     </form>
 </body>
 </html>
