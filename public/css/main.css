@@ -266,6 +266,25 @@ p {
     color: whitesmoke;
 }
 
+.buy {
+    background: rgb(182, 50, 27);
+    color: rgba(245,245,245, 0.75);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid rgba(245,245,245,0.5);
+    text-transform: uppercase;
+}
+
+.buy:hover {
+    box-shadow: 0 0 5px 2px whitesmoke;
+}
+
+.buy:active {
+    box-shadow: 0 0 5px 2px whitesmoke;
+    color: white;
+}
+
 /* RESPONSIVE ELEMENTS */
 @media only screen and (max-width: 600px) {
     h1 {
