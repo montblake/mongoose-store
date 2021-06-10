@@ -36,14 +36,6 @@ ideasRouter.delete('/:id', (req, res) => {
 });
 
 
-// Update
-ideasRouter.put('/:id', (req, res) => {
-    Idea.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedIdea) => {
-        res.redirect(`/ideas/${req.params.id}`);
-    });
-});
-
-
 // BUY
 ideasRouter.put('/:id/buy', (req, res) => {
     Idea.findById(req.params.id, (error, foundIdea) => {
@@ -55,6 +47,15 @@ ideasRouter.put('/:id/buy', (req, res) => {
         });
     });
 });
+
+
+// Update
+ideasRouter.put('/:id', (req, res) => {
+    Idea.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedIdea) => {
+        res.redirect(`/ideas/${req.params.id}`);
+    });
+});
+
 
 // Create
 ideasRouter.post('/', (req, res) => {
