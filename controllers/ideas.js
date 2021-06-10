@@ -44,6 +44,18 @@ ideasRouter.put('/:id', (req, res) => {
 });
 
 
+// BUY
+ideasRouter.put('/:id/buy', (req, res) => {
+    Idea.findById(req.params.id, (error, foundIdea) => {
+        foundIdea.qty -= 1;
+        foundIdea.save();
+        res.render('show.ejs',
+        {
+            idea: foundIdea,
+        });
+    });
+});
+
 // Create
 ideasRouter.post('/', (req, res) => {
     if (req.body.price < 0) req.body.price = 0;
@@ -72,5 +84,9 @@ ideasRouter.get('/:id', (req, res) => {
             });
     });
 });
+
+
+
+
 
 module.exports = ideasRouter;

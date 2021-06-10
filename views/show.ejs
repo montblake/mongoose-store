@@ -24,9 +24,12 @@
     <p><%=idea.price%></p>
     <h2>Quantity in Stock</h2>
     <p><%=idea.qty%></p>
-    <form>
-        <input class="buy" type="submit" value="buy idea">
-    </form>
+    <% if (idea.qty > 0) { %>
+        <form action="/ideas/<%=idea.id%>/buy?_method=PUT" method="POST">
+            <input class="buy" type="submit" value="buy idea">
+        </form>
+    <% } %>
+    
     
 </body>
 </html>
