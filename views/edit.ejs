@@ -8,16 +8,28 @@
     <title>New Idea</title>
 </head>
 <body>
-    <nav>
+    <nav class="topNav">
         <a href="/ideas">Back to Main Ideas Page</a>
     </nav>
     <h1>Edit Idea Page</h1>
-    <form action="/ideas/<%=idea.id%>?_method=PUT" method="POST">
-        Title: <input type="text" name="title" value="<%=idea.title%>" />
-        Description: <textarea name="description" rows="4" cols="50" ><%=idea.description%></textarea><br/>
-        Image: <input type="text" name="image" value="<%=idea.image%>"/><br/>
-        Price: <input type="number" name="price" value="<%=idea.price%>" /><br/>
-        Quantity: <input type="number" name="qty" value="<%=idea.qty%>"/><br/>
+    <form action="/ideas/<%=idea.id%>?_method=PUT" method="POST" class="newIdea">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="<%=idea.title%>" />
+        <label for="description">Description</label>
+        <textarea name="description" id="description" ><%=idea.description%></textarea>
+        <label for="image">Image URL</label>
+        <input type="text" name="image" id="image" value="<%=idea.image%>"/>
+        <div class="numContainer">
+            <div>
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" value="<%=idea.price%>" />
+            </div>
+            <div>
+                <label for="qty">Quantity</label>
+                <input type="number" name="qty" id="qty" value="<%=idea.qty%>"/>
+            </div>
+        </div>
+        
         <input type="submit" value="Submit Edited Idea" />
     </form>
 </body>

@@ -8,17 +8,29 @@
     <title>New Idea</title>
 </head>
 <body>
-    <nav>
-        <a href="/ideas">Back to Main Ideas Page</a>
+    <nav class="topNav">
+        <a href="/ideas">Back to Ideas Index</a>
     </nav>
     <h1>New Idea Page</h1>
-    <form action="/ideas" method="POST">
-        Title: <input type="text" name="title" /><br/>
-        Description: <textarea name="description" rows="4" cols="50">This is where you describe your idea. As briefly as possible.</textarea><br/>
-        Image: <input type="text" name="image" placeholder="Enter URL where image can be found"/><br/>
-        Price: <input type="number" name="price"/><br/>
-        Quantity: <input type="number" name="qty"/><br/>
-        <input type="submit" value="Add Idea" />
+    <form action="/ideas" method="POST" class="newIdea">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title"/>
+        <label for="description">Description</label>
+        <textarea name="description" id="description"></textarea>
+        <label for="image">Image URL</label>
+        <input type="text" name="image" id="image"/>
+        <div class="numContainer">
+            <div>
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price"/>
+            </div>
+            <div>
+                <label for="qty">Quantity</label>
+                <input type="number" name="qty" id="qty"/>
+            </div>
+        </div>
+        
+        <input type="submit" value="Submit New Idea" />
     </form>
 </body>
 </html>

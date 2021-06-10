@@ -8,24 +8,28 @@
     <title>Marketplace of Ideas</title>
 </head>
 <body>
-    <nav>
-        <a href="/ideas/new">Add a New Idea</a>
-    </nav>
-    <h1>The Marketplace of Ideas</h1>
-    <h2>Ideas good and bad, new and used, borrowed and stolen. For Sale to the public.</h2>
-    <ul>
-        <% ideas.forEach(function(idea){ %>
-            <li>
-                <a href="/ideas/<%=idea.id%>">
-                    <%=idea.title%>
-                    <img class="indexPic" src="<%=idea.image%>" alt="<%=idea.title%>">
-                </a><br />
-                <a href="/ideas/<%=idea.id%>/edit">Edit</a>
-                <form action="/ideas/<%=idea.id%>?_method=DELETE" method="POST">
-                    <input type="submit" value="DELETE">
-                </form>
-            </li>
-        <%});%>
-    </ul>
+    <main>
+        <nav class="topNav">
+            <a href="/ideas/new">Add a New Idea</a>
+        </nav>
+        <h1>The Marketplace of Ideas</h1>
+        <ul>
+            <% ideas.forEach(function(idea){ %>
+                <li>
+                    <a href="/ideas/<%=idea.id%>">
+                        <img class="indexPic" src="<%=idea.image%>" alt="<%=idea.title%>">
+                        <%=idea.title%>
+                    </a><br />
+                    <div class="controls">
+                        <a href="/ideas/<%=idea.id%>/edit">Edit</a>
+                    <form action="/ideas/<%=idea.id%>?_method=DELETE" method="POST">
+                        <input type="submit" value="DELETE">
+                    </form>
+                    </div>
+                    
+                </li>
+            <%});%>
+        </ul>
+    </main>
 </body>
 </html>
